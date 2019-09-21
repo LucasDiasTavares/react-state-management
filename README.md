@@ -4,7 +4,7 @@ React Studying
 ## learning-state-management
 Learning the basics of state management. Here I'm doing a movie site. I have a list of objects:
 
-### ```
+```
 export const MovieProvider = props => {
   const [movies, setMovies] = useState([
 {
@@ -27,7 +27,8 @@ To get access of this data in any part of my code i need to create a new file wi
 ### `export const MovieContext = createContext();`
 
 my return needs to be like this:
-### ```
+
+```
 return (
 <MovieContext.Provider value={[movies, setMovies]}>
   {props.children}
@@ -40,7 +41,7 @@ Now I need to open my App.js and:
 ### `import { MovieProvider } from './MovieListContex';`
 
 So now I wrap every thing that need to use this information.
-### ```
+```
 function App() {
   return (
     <MovieProvider>
@@ -56,13 +57,13 @@ function App() {
 OK, but how can I access this information throgh the others components?
 
 Easy, back to my MovieList.js
-### ```
+
+```
 import React, { useContext } from 'react';
 import Movie from './Movie';
 import { MovieContext } from './MovieListContex';
 ```
-
-### ```
+```
 const MovieList = () => {
   const [movies] = useContext(MovieContext);
   return (
