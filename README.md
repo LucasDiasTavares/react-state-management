@@ -4,7 +4,7 @@ React Studying
 ## learning-state-management
 Learning the basics of state management. Here I'm doing a movie site. I have a list of objects:
 
-### `export const MovieProvider = props => {
+### ```export const MovieProvider = props => {
   const [movies, setMovies] = useState([
 {
   name: 'MovieName',
@@ -16,7 +16,7 @@ Learning the basics of state management. Here I'm doing a movie site. I have a l
   price: 'MoviePrice2',
   id: 1234567892
 }
-]);`
+]);```
 
 To get access of this data in any part of my code i need to create a new file with the name like 'MovieContex.js', then import createContext.
 
@@ -25,18 +25,18 @@ To get access of this data in any part of my code i need to create a new file wi
 ### `export const MovieContext = createContext();`
 
 my return needs to be like this:
-### `return (
+### ```return (
 <MovieContext.Provider value={[movies, setMovies]}>
   {props.children}
 </MovieContext.Provider>
-);`
+);```
 
 
 Now I need to open my App.js and:
 ### `import { MovieProvider } from './MovieListContex';`
 
 So now I wrap every thing that need to use this information.
-### `function App() {
+### ```function App() {
   return (
     <MovieProvider>
       <div className='App'>
@@ -45,16 +45,16 @@ So now I wrap every thing that need to use this information.
       </div>
     </MovieProvider>
   );
-}`
+}```
 
 OK, but how can I access this information throgh the others components?
 
 Easy, back to my MovieList.js
-### `import React, { useContext } from 'react';
+### ```import React, { useContext } from 'react';
 import Movie from './Movie';
-import { MovieContext } from './MovieListContex';`
+import { MovieContext } from './MovieListContex';```
 
-### `const MovieList = () => {
+### ```const MovieList = () => {
   const [movies] = useContext(MovieContext);
   return (
     <div>
@@ -63,7 +63,7 @@ import { MovieContext } from './MovieListContex';`
       ))}
     </div>
   );
-};`
+};```
 
 ## Another example in my Navbar.js
 
